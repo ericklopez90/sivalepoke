@@ -1,1 +1,16 @@
-<p>paginator works!</p>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+
+      <button class="page-link" aria-label="Previous" (click)="prevPage()" [disabled]="currentPage === 1">
+        <span aria-hidden="true">&laquo;</span>
+      </button>
+    </li>
+    <li class="page-item"><a class="page-link">{{currentPage}}</a></li>
+    <li class="page-item">
+      <button class="page-link" aria-label="Next" (click)="nextPage()">
+        <span aria-hidden="true">&raquo;</span>
+      </button>
+    </li>
+  </ul>
+</nav>

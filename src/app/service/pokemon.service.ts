@@ -12,8 +12,21 @@ export class PokemonService {
 
   constructor(private http: HttpClient) { }
 
-  getPokemonList(): Observable<PokemonListResponse>{
-    const url = this.apiUrl;
-    return this.http.get<PokemonListResponse>(url);
+  getPokemonList(offset = 0, limit = 20): Observable<PokemonListResponse>{
+    const url = `${this.apiUrl}?offset=${offset}&limit=${limit}`;
+    return this.http.get<PokemonListResponse>(url).pipe(
+      map(response => ({
+        ...response,
+        results: response.results.map(pokemon => ({
+          ...pokemon,
+          id: this.extractIdFromUrl(pokemon.url)
+        }))
+      }))
+    );
+  }
+
+  private extractIdFromUrl(url: string): number {
+    const parts = url.split('/');
+    return +parts[parts.length - 2];
   }
 }

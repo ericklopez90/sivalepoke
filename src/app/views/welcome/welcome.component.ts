@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { pokemonList } from 'src/app/interfaces/pokemonList.interface';
 import { PokemonService } from 'src/app/service/pokemon.service';
 
@@ -7,19 +7,29 @@ import { PokemonService } from 'src/app/service/pokemon.service';
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.css']
 })
-export class WelcomeComponent {
+export class WelcomeComponent implements OnInit {
   pokemonList: pokemonList[] = [];
+  currentPage = 1;
+  limit = 20;
 
-constructor(private pokemonService: PokemonService){  }
+  constructor(private pokemonService: PokemonService){  }
 
-ngOnInit() {
-  this.getpokemon();
-}
+  ngOnInit() {
+    this.getpokemon();
+  }
 
-getpokemon(){
-  this.pokemonService.getPokemonList()
+  getpokemon(){
+    const offset = (this.currentPage - 1) * this.limit;
+    this.pokemonService.getPokemonList(offset, this.limit)
   .subscribe(response => {
-    this.pokemonList = response.results
-  })
-}
+    this.pokemonList = response.results;
+    })
+  }
+
+  pageChange(newPage: number){
+    this.currentPage = newPage;
+    this.getpokemon();
+  }
+
+
 }
