@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  logoSiV = 'assets/svg/183317.svg';
+
 }
