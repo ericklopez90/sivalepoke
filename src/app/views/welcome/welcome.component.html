@@ -1,1 +1,14 @@
-<p>welcome works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-10 offset-1 my-5">
+
+            <div class="row">
+                <div class="col-3"  *ngFor="let pokemon of pokemonList">
+                    <app-cards [name]="pokemon.name"></app-cards>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
