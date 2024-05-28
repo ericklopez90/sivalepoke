@@ -1,0 +1,12 @@
+.modal-body {
+    align-items: center;
+}
+
+.image-container {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.data-container {
+    flex: 2;
+}

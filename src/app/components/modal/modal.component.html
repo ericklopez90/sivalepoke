@@ -1,1 +1,32 @@
-<p>modal works!</p>
+<div class="modal fade" id="pokemonModal" tabindex="-1" aria-labelledby="pokemonModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered"> 
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="pokemonModalLabel">{{ pokemon.name | titlecase }}</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body d-flex">
+            <div class="image-container">
+                <img [src]="pokemon.img" alt="{{ pokemon.name }}" class="img-fluid">
+            </div>
+            <div class="data-container">
+                <div class="row">  
+                    <div class="col-md-6 mb-2" *ngFor="let pokeType of pokemon.types"> 
+                        <p>Tipo: {{ pokeType }}</p>
+                    </div>
+                </div>
+                <div class="row"> 
+                    <div class="col-md-6 mb-2" *ngFor="let stat of pokemon.stats"> 
+                        <p>{{ stat.name | titlecase }}: {{ stat.base_stat }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+      </div>
+  </div>
+</div>

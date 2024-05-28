@@ -2,11 +2,11 @@
   <div class="row">
     <div class="col-10 offset-1 my-5">
 
-
     <!--cards-->
       <div class="row">
         <div class="col-sm-3 mt-2 col-12" *ngFor="let pokemon of pokemonList">
-          <app-cards [name]="pokemon.name | titlecase"></app-cards>
+          <app-cards [name]="pokemon.name | titlecase" [number]="pokemon.id" (numberPokemon)="onePokemon($event)"
+            data-bs-toggle="modal" data-bs-target="#pokemonModal"></app-cards>
         </div>
       </div>
 
@@ -18,7 +18,9 @@
         </div>
       </div>
 
+    <!--modal-->
+      <app-modal [pokemon]="pokemon"></app-modal>
+
     </div>
   </div>
-
 </div>

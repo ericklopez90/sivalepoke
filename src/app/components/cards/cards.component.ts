@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-cards',
@@ -8,5 +8,11 @@ import { Component, Input } from '@angular/core';
 export class CardsComponent {
 
   @Input() name!: string;
+  @Input() number!: number;
+  @Output() numberPokemon = new EventEmitter<number>();
+
+  onClick() {
+    this.numberPokemon.emit(this.number);
+  }
 
 }

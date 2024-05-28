@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { PokemonModal } from 'src/app/interfaces/pokemonModal.interface';
 
 @Component({
   selector: 'app-modal',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent {
-
+  @Input() pokemon!: PokemonModal
 }
